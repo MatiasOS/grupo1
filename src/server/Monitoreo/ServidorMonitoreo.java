@@ -35,7 +35,7 @@ public class ServidorMonitoreo {
             ss = new ServerSocket(5001);
             // Inicializacion de heartbeat con la ip y el puerto
             // a donde se tienen que comunicar los scripts
-            Heartbeat hear = new Heartbeat(ipDns,5001);
+            Heartbeat hear = new Heartbeat(ipDns,10580);
             hear.run();
             System.out.println("\t[OK]");
             int idSession = 0;
