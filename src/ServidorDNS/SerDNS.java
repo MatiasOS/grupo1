@@ -12,7 +12,7 @@ public class SerDNS {
 	private static int idSer;
 	
 	// Puerto por el cual se registran los servidores
-	private int puertoServidores = 10579;
+//	private int puertoServidores = 10579;
 	
     public static void main(String args[]) throws IOException {
     	
@@ -20,15 +20,16 @@ public class SerDNS {
     	idSer=0;
     	
     	((RegistradorServidores)new RegistradorServidores(direcciones)).run();
-    	
-        System.out.print("Inicializando servidor... ");
-        try {
-            ss = new ServerSocket(10578); //SE CREA UNA CONEXIÓN del SERVER
+    	((EscuchadorServidor) new EscuchadorServidor()).run();
+    	((AsignadorServidor) new AsignadorServidor(direcciones)).run();
+        System.out.print("server ready... ");
+/*        try {
+            ss = new ServerSocket(10578); //SE CREA UNA CONEXIï¿½N del SERVER
             System.out.println("\t[OK]");
             
             int idSession = 0;
             while (true) { //ESPERA CLIENTES
-                //System.out.println("Nueva conexión entrante: "+ (Socket)ss.accept());
+                //System.out.println("Nueva conexiï¿½n entrante: "+ (Socket)ss.accept());
             	System.out.println("idServidor"+idSer);
                 ((SerDNSHilo) new SerDNSHilo((Socket)ss.accept(), idSession, direcciones.elementAt(idSer%direcciones.size())) ).start(); //LE PASO EL SOCKET AL SERDNSHILO, LO CREO Y LO RUNNEO
                 idSession++;
@@ -37,6 +38,6 @@ public class SerDNS {
 
         } catch (IOException ex) {
             Logger.getLogger(SerDNS.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        }*/
     }
 }
