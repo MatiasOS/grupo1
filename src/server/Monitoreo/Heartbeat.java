@@ -23,7 +23,7 @@ public class Heartbeat implements Runnable {
 	public void run() {
 		
 		try {
-			sk = new Socket(ip, 10578);
+			sk = new Socket(ip, 10580);
 			dos = new DataOutputStream(sk.getOutputStream());
 		} catch (IOException e1) {
 			// TODO Auto-generated catch block
@@ -32,10 +32,10 @@ public class Heartbeat implements Runnable {
 		
 		while (true){
 			try {
-				dos.writeBytes(mensaje);
+				//dos.writeBytes(mensaje);
 				System.out.println("El servidor con ip"+this.ip+"se va a dormir 10 segs");
 				Thread.sleep(10000);
-			} catch (IOException | InterruptedException e) {
+			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
