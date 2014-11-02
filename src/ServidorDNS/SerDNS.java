@@ -26,7 +26,7 @@ public class SerDNS {
     	Thread t1 = new Thread(new RegistradorServidores(direcciones,10579,contadores));
     	t1.start();
     	System.out.print("server starup1... ");
-    	Thread t2 = new Thread(new EscuchadorServidor(direcciones,10580));
+    	Thread t2 = new Thread(new EscuchadorServidor(direcciones,10580,contadores));
     	t2.start();
     	System.out.print("server starup2... ");
     	//Thread t3 = new Thread(new AsignadorServidor(direcciones,10578));

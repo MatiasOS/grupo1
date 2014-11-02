@@ -39,6 +39,7 @@ public class RegistradorServidores implements Runnable{
 				sk = ss.accept();
 				DataInputStream dis = new DataInputStream(sk.getInputStream());
 				String ipServidorEntrante = dis.readUTF();
+				//System.out.println(ipServidorEntrante+" se quiere registrar");
 				(new Thread(new RegistradorServidorHilo(ipServidorEntrante,direcciones,contadores))).start();
 			} catch (IOException e) {
 				e.printStackTrace();

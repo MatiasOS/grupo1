@@ -20,13 +20,17 @@ public class RegistradorServidorHilo implements Runnable{
 	public void run() {
 		TimerTaskTemporizador tt = new TimerTaskTemporizador(ip, contadores, direcciones);
 		Timer t = new Timer();
-		t.schedule(tt, 0, 15000);
+		t.schedule(tt, 12000, 12000);
+		//System.out.println("Abro sync hilo registrador");
 		synchronized (contadores) {
 			synchronized (direcciones) {
 				direcciones.add(ip);
 				contadores.put(ip,t);
+				//System.out.println(contadores);
 			}
 		}
+		System.out.println("se registro "+ip);
+		//System.out.println("Cierro sync hilo registrador");
 	}
 
 }
