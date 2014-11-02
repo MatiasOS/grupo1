@@ -15,7 +15,7 @@ public class AsignadorServidor implements Runnable {
 	{
 		this.direcciones = direcciones;
 		try {
-			ss = new ServerSocket(10580);
+			ss = new ServerSocket(puerto);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

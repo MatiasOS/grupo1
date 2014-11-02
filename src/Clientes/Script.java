@@ -5,7 +5,7 @@ import java.net.Socket;
 import java.util.logging.*;
 
 class Script extends Thread {
-	private static String ipDns = "192.168.0.12";// TODO Harcodear ipDns
+	private static String ipDns = "127.0.0.1";// TODO Harcodear ipDns
     protected Socket sk;
     protected DataOutputStream dos;
     protected DataInputStream dis;
@@ -25,6 +25,7 @@ class Script extends Thread {
             dos.writeUTF("getServidor"); //SALIDA
             String ipServ="";
             ipServ = dis.readUTF(); //ENTRADA
+            //ipServ = "127.0.0.1";
             System.out.println(id + " Servidor devuelve: " + ipServ);
             
             enviarClicks(ipServ); // Levanta los clicks desde el txt. y los envia a respuesta
@@ -34,18 +35,18 @@ class Script extends Thread {
         }
     }
 
-	private void enviarClicks(String ipServ) {
-       
+    private void enviarClicks(String ipServ) {
+        
 
 		File f = new File( "./clicks.txt" );
 	    BufferedReader entrada;
 	    try {
-	    	 sk = new Socket(ipServ, 5001); // Creo el socket al servidorMonitoreo al que va a enviar los clicks
-	         dos = new DataOutputStream(sk.getOutputStream()); 
-	         dis = new DataInputStream(sk.getInputStream());
 	         entrada = new BufferedReader( new FileReader( f ) );
 	         String linea;
 	         while(entrada.ready()){
+	        	 sk = new Socket(ipServ, 5001); // Creo el socket al servidorMonitoreo al que va a enviar el click
+		         dos = new DataOutputStream(sk.getOutputStream()); // cada vez que va a enviar crea el socket
+		         dis = new DataInputStream(sk.getInputStream());
 	        	 linea = entrada.readLine();
 	        	 System.out.println(linea);
 	        	 System.out.println( "Script ["+id + "] envia click" ); 
@@ -54,6 +55,5 @@ class Script extends Thread {
 	    }catch (IOException e) {
 	      e.printStackTrace();
        }
-		
 	}
 }

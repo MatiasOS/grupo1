@@ -24,8 +24,8 @@ public class ServidorHilo extends Thread {
         this.socket = socket;
         this.idSessio = id;
         try {
-            dos = new DataOutputStream(socket.getOutputStream());
-            dis = new DataInputStream(socket.getInputStream());
+            dos = new DataOutputStream(this.socket.getOutputStream());
+            dis = new DataInputStream(this.socket.getInputStream());
         } catch (IOException ex) {
             Logger.getLogger(ServidorHilo.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -45,14 +45,12 @@ public class ServidorHilo extends Thread {
         String click = "";
         try {
             click = dis.readUTF(); 
-            System.out.println("El cliente con idSesion "+this.idSessio+" envió un click");
             dos.writeUTF("me llego el click...");
-   
             Parser p = new Parser();
             Click ck;
             ck = p.parsear(click);
             ck.print();
-            //TODO pasarle este click al que comunica con la bd para que lo guarde, Hacerlo desde este hilo 
+            
             
         } catch (IOException ex) {
             Logger.getLogger(ServidorHilo.class.getName()).log(Level.SEVERE, null, ex);

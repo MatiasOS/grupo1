@@ -8,7 +8,7 @@ import server.procesamiento.Servidor;
 
 public class ServidorMonitoreo {
 	
-	private static String ipDns = "192.168.0.20";// TODO Harcodear ipDns
+	private static String ipDns = "192.168.0.12";// TODO Harcodear ipDns
 	private static DataOutputStream registroServidor;
 	
 	
