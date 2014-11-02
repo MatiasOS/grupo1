@@ -8,9 +8,9 @@ import server.procesamiento.Servidor;
 
 public class ServidorMonitoreo {
 	
-	private static String ipDns = "192.168.0.12";// TODO Harcodear ipDns
+	private static String ipDns = "192.168.1.9";// TODO Harcodear ipDns
 	private static DataOutputStream registroServidor;
-	//System.out.println("IP of my system is := "+IP.getHostAddress());
+	
 	
 	private static void registrarServidor(InetAddress ipMia){
 		try {
@@ -42,7 +42,7 @@ public class ServidorMonitoreo {
             while (true) {
                 Socket socket;
                 socket = ss.accept();
-                System.out.println("Nueva conexión entrante: "+socket);
+                System.out.println("Nueva conexiï¿½n entrante: "+socket);
                 // Se crea un nuevo hilo para manejar la conexion con el script
                 ((ServidorHilo) new ServidorHilo(socket, idSession)).start();
                 idSession++;

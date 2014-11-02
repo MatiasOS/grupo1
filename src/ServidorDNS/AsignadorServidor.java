@@ -7,30 +7,29 @@ import java.net.Socket;
 import java.util.Vector;
 
 public class AsignadorServidor implements Runnable {
+	
 	private ServerSocket ss;
 	private Vector<String> direcciones;
 	
-	public AsignadorServidor (Vector<String> direcciones)
+	public AsignadorServidor (Vector<String> direcciones, int puerto)
 	{
 		this.direcciones = direcciones;
+		try {
+			ss = new ServerSocket(10580);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
 	}
 	
 	@Override
 	public void run() {
-		// TODO Auto-generated method stub
-		try {
-			ss = new ServerSocket(10580);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 		while (true){
 			Socket sk;
 			try {
 				sk = ss.accept();
 				((AsignadorServidorHilo) new AsignadorServidorHilo((Socket)ss.accept(),direcciones)).run();
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}

@@ -4,16 +4,26 @@ import java.io.DataInputStream;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.Vector;
 
 public class EscuchadorServidor implements Runnable {
+	
 	private ServerSocket ss;
-	@Override
+	private Vector<String> direcciones;
+	
+	public EscuchadorServidor(Vector<String> direcciones, int puerto) {
+		this.direcciones=direcciones;
+		try {
+			ss = new ServerSocket(puerto);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
 	public void run() {
-		// TODO Auto-generated method stub
 		try {
 			ss = new ServerSocket(10580);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		while (true){
@@ -24,7 +34,6 @@ public class EscuchadorServidor implements Runnable {
 				String ipServidorEntrante = dis.readUTF();
 				((EscuchadorServidorHilo) new EscuchadorServidorHilo(ipServidorEntrante)).run();
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}

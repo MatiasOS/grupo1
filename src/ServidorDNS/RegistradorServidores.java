@@ -10,21 +10,22 @@ import server.Monitoreo.ServidorHilo;
 
 public class RegistradorServidores implements Runnable{
 
-	Vector<String> direcciones;
+	private Vector<String> direcciones;
 	private ServerSocket ss;
 	
-	public RegistradorServidores(Vector<String> direcciones) {
+	public RegistradorServidores(Vector<String> direcciones, int puerto) {
 		this.direcciones=direcciones;
+		try {
+			ss = new ServerSocket(puerto);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+		
 	}
 
 	@Override
 	public void run() {
-		try {
-			ss = new ServerSocket(10579);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 		while (true){
 			Socket sk;
 			try {
@@ -33,7 +34,6 @@ public class RegistradorServidores implements Runnable{
 				String ipServidorEntrante = dis.readUTF();
 				((RegistradorServidorHilo) new RegistradorServidorHilo(ipServidorEntrante,direcciones)).run();
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}

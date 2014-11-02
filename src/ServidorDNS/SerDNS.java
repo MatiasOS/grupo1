@@ -17,11 +17,11 @@ public class SerDNS {
     public static void main(String args[]) throws IOException {
     	
     	direcciones = new Vector<String>();
-    	idSer=0;
-    	
-    	((RegistradorServidores)new RegistradorServidores(direcciones)).run();
-    	((EscuchadorServidor) new EscuchadorServidor()).run();
-    	((AsignadorServidor) new AsignadorServidor(direcciones)).run();
+    	//idSer=0;
+    	System.out.print("server starup... ");
+    	((RegistradorServidores)new RegistradorServidores(direcciones,10579)).run();
+    	((EscuchadorServidor) new EscuchadorServidor(direcciones,10580)).run();
+    	((AsignadorServidor) new AsignadorServidor(direcciones,10578)).run();
         System.out.print("server ready... ");
 /*        try {
             ss = new ServerSocket(10578); //SE CREA UNA CONEXI�N del SERVER
