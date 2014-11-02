@@ -12,7 +12,7 @@ public class SerDNS {
 	private static int idSer;
 	
 	// Puerto por el cual se registran los servidores
-//	private int puertoServidores = 10579;
+	//private int puertoServidores = 10579;
 	
     public static void main(String args[]) throws IOException {
     	

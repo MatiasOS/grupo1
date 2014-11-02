@@ -23,7 +23,7 @@ public class Heartbeat implements Runnable {
 	public void run() {
 		
 		try {
-			sk = new Socket(ip, 10580);
+			sk = new Socket(ip, puerto);
 			dos = new DataOutputStream(sk.getOutputStream());
 		} catch (IOException e1) {
 			// TODO Auto-generated catch block

@@ -6,6 +6,7 @@ public class RegistradorServidorHilo implements Runnable{
 
 	private String ip;
 	private Vector<String> direcciones;
+	private long time_start, time_end;
 	
 	public RegistradorServidorHilo(String ip,Vector<String> direcciones) {
 		this.direcciones = direcciones;
@@ -16,7 +17,7 @@ public class RegistradorServidorHilo implements Runnable{
 	public void run() {
 		synchronized (this.direcciones) {
 			this.direcciones.add(ip);
-			System.out.println("Agrego direccion"+ip);
+			System.out.println("Agrego direccion "+ip);
 		}
 	}
 
