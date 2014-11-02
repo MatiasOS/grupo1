@@ -6,7 +6,6 @@ public class RegistradorServidorHilo implements Runnable{
 
 	private String ip;
 	private Vector<String> direcciones;
-	private long time_start, time_end;
 	
 	public RegistradorServidorHilo(String ip,Vector<String> direcciones) {
 		this.direcciones = direcciones;
