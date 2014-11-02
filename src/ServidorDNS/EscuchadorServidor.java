@@ -24,20 +24,14 @@ public class EscuchadorServidor implements Runnable {
 	}
 
 	public void run() {
-		Socket sk = new Socket();
-		try {
-			sk = ss.accept();
-		} catch (IOException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
 		while (true){
 			try {
+				Socket sk = ss.accept();
 				//System.out.println("Todavia no entra el heartbeat (entra)");
-				DataInputStream dis = new DataInputStream(sk.getInputStream());
-				String ipServidorEntrante = dis.readUTF();
+				//DataInputStream dis = new DataInputStream(sk.getInputStream());
+				//String ipServidorEntrante = dis.readUTF();
 				//System.out.println("heartbeat de "+ipServidorEntrante);
-				Thread t = new Thread(new EscuchadorServidorHilo(ipServidorEntrante,contadores,direcciones));
+				Thread t = new Thread(new EscuchadorServidorHilo(contadores,direcciones,sk));
 				t.start();
 				
 				//System.out.println("sale");

@@ -30,13 +30,14 @@ public class RegistradorServidores implements Runnable{
 
 	@Override
 	public void run() {
+		Socket sk;
 		while (true){
-			Socket sk;
 			try {
 				// Cada conexion entrante es un servidor que se quiere registrar.
 				// Entonces por cada conexion se crea un registrador hilo que es
 				// quien agregara la ip entrante a la lista de direcciones del dns
 				sk = ss.accept();
+				//System.out.println(sk.toString());
 				DataInputStream dis = new DataInputStream(sk.getInputStream());
 				String ipServidorEntrante = dis.readUTF();
 				//System.out.println(ipServidorEntrante+" se quiere registrar");
