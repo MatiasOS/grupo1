@@ -12,11 +12,10 @@ public class Heartbeat implements Runnable {
     private String mensaje;
     private int puerto;
 	
-	public Heartbeat(String ip,int puerto) {
+	public Heartbeat(String ip,int puerto,String ipMia) {
 		this.ip = ip;
-		this.mensaje = ip;
+		this.mensaje = ipMia;
 		this.puerto = puerto;
-		
 	}
 	
 	@Override
@@ -32,10 +31,10 @@ public class Heartbeat implements Runnable {
 		
 		while (true){
 			try {
-				//dos.writeBytes(mensaje);
-				System.out.println("El servidor con ip"+this.ip+"se va a dormir 10 segs");
+				dos.writeUTF(mensaje);
+				System.out.println("Le envio al servidor "+this.ip+" "+mensaje +"se va a dormir 10 segs");
 				Thread.sleep(10000);
-			} catch (InterruptedException e) {
+			} catch (InterruptedException | IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}

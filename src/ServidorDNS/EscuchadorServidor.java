@@ -6,8 +6,6 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.*;
 
-import com.sun.org.apache.xalan.internal.xsltc.runtime.Hashtable;
-
 public class EscuchadorServidor implements Runnable {
 	
 	private ServerSocket ss;
@@ -28,10 +26,13 @@ public class EscuchadorServidor implements Runnable {
 		while (true){
 			Socket sk;
 			try {
+				System.out.println("Todavia no entra el heartbeat");
 				sk = ss.accept();
 				DataInputStream dis = new DataInputStream(sk.getInputStream());
 				String ipServidorEntrante = dis.readUTF();
-				((EscuchadorServidorHilo) new EscuchadorServidorHilo(ipServidorEntrante,contadores,direcciones)).run();
+				System.out.println("heartbeat de "+ipServidorEntrante);
+				Thread t = new Thread(new EscuchadorServidorHilo(ipServidorEntrante,contadores,direcciones));
+				t.start();
 			} catch (IOException e) {
 				e.printStackTrace();
 			}

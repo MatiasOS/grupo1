@@ -18,11 +18,11 @@ public class EscuchadorServidorHilo implements Runnable {
 		this.direcciones=direcciones;
 	}
 	public void run() {
-		// TODO ACTUALIZAR ALGUN TEMPORIZADOR
 		(this.contadores.get(this.ip)).cancel();
+		System.out.println("se cancelo el contador de ip "+this.ip);
 		TimerTaskTemporizador tt = new TimerTaskTemporizador(ip, contadores, direcciones);
 		Timer t = new Timer();
-		t.schedule(tt, 0, 12000);
+		t.schedule(tt, 0, 15000);
 		this.contadores.put(ip, t);
 		System.out.println(" Heartbeat de " + this.ip);
 	}

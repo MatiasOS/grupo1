@@ -8,7 +8,7 @@ import server.procesamiento.Servidor;
 
 public class ServidorMonitoreo {
 	
-	private static String ipDns = "192.168.1.9";// TODO Harcodear ipDns
+	private static String ipDns = "192.168.0.20";// TODO Harcodear ipDns
 	private static DataOutputStream registroServidor;
 	
 	
@@ -35,7 +35,7 @@ public class ServidorMonitoreo {
             ss = new ServerSocket(5001);
             // Inicializacion de heartbeat con la ip y el puerto
             // a donde se tienen que comunicar los scripts
-            Heartbeat hear = new Heartbeat(ipDns,10580);
+            Heartbeat hear = new Heartbeat(ipDns,10580,ipMia.getHostAddress());
             hear.run();
             System.out.println("\t[OK]");
             int idSession = 0;
