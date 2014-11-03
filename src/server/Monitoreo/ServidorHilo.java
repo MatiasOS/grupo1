@@ -8,11 +8,9 @@ public class ServidorHilo extends Thread {
     private Socket socket;
     private DataOutputStream dos;
     private DataInputStream dis;
-	private int idSessio;
 
-    public ServidorHilo(Socket socket, int id) {
+    public ServidorHilo(Socket socket) {
         this.socket = socket;
-        this.idSessio = id;
         try {
             dos = new DataOutputStream(this.socket.getOutputStream());
             dis = new DataInputStream(this.socket.getInputStream());
@@ -38,8 +36,11 @@ public class ServidorHilo extends Thread {
             Parser p = new Parser();
             Click ck;
             ck = p.parsear(click);
-            ck.print();      
-        } catch (IOException ex) {
+            ck.print();
+            DataAccess data = new DataAccess();
+            data.insertarValor(ck);
+            
+        } catch (IOException | ClassNotFoundException ex) {
             Logger.getLogger(ServidorHilo.class.getName()).log(Level.SEVERE, null, ex);
         }
         desconnectar();

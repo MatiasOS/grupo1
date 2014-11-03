@@ -8,8 +8,6 @@ import java.util.HashMap;
 import java.util.Timer;
 import java.util.Vector;
 
-import server.Monitoreo.ServidorHilo;
-
 public class RegistradorServidores implements Runnable{
 
 	private Vector<String> direcciones;

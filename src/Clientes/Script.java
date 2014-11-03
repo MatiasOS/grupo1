@@ -20,15 +20,11 @@ class Script extends Thread {
             sk = new Socket(ipDns, 10578); // TODO setear ip del servidor DNS
             dos = new DataOutputStream(sk.getOutputStream()); //LE DOY LAS ENTRADAS Y SALIDAS DEL SOCKET
             dis = new DataInputStream(sk.getInputStream());
-            
             System.out.println( "Script [" +id + "] Pide Servidor ");
-            dos.writeUTF("getServidor"); //SALIDA
             String ipServ="";
             ipServ = dis.readUTF(); //ENTRADA
-            //ipServ = "127.0.0.1";
             System.out.println(id + " Servidor devuelve: " + ipServ);
-            
-            //enviarClicks(ipServ); // Levanta los clicks desde el txt. y los envia a respuesta
+            enviarClicks(ipServ); // Levanta los clicks desde el txt. y los envia a respuesta
  
         } catch (IOException ex) {
             Logger.getLogger(Script.class.getName()).log(Level.SEVERE, null, ex);
@@ -36,7 +32,6 @@ class Script extends Thread {
     }
 
     private void enviarClicks(String ipServ) {
-        
 
 		File f = new File( "./clicks.txt" );
 	    BufferedReader entrada;

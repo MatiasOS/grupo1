@@ -46,11 +46,11 @@ public class DataAccess {
 	        }
 	    }
 
-	public void insertarValor(String ip, int click) throws ClassNotFoundException
+	public void insertarValor(Click c) throws ClassNotFoundException
 	{
 		try {
 			Connection conexion = DataAccess.GetConnection();
-            String query = "INSERT INTO datos_no_procesados (`id`, `ip`, `fecha`, `click`) VALUES (NULL, '"+ip+"', NULL, '"+click+"');";
+            String query = "INSERT INTO datos_no_procesados (`link`, `ip`, `fecha`,`hora`, `so`,`browser`) VALUES (" + c.getLink()+"," +c.getIp()+"," +c.getFecha() + "," +c.getHora()+","+c.getSo()+","+c.getBrowser()+","+c.getIp()+");";
             System.out.println(query);
             PreparedStatement preparedStmt = (PreparedStatement) conexion.prepareStatement(query);
             preparedStmt.execute();

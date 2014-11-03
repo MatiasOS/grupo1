@@ -16,7 +16,7 @@ public class AsignadorServidorHilo implements Runnable {
 		this.dir=0;
 		this.socket = socket;
 		try {
-			dos = new DataOutputStream(socket.getOutputStream());
+			dos = new DataOutputStream(this.socket.getOutputStream());
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
