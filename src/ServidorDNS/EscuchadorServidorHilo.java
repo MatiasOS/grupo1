@@ -41,7 +41,7 @@ public class EscuchadorServidorHilo implements Runnable {
 		//System.out.println("Abro sync hilo escuchadorHilo");
 		synchronized (contadores) {
 			(this.contadores.get(this.ip)).cancel();
-			System.out.println("se cancelo el contador de ip "+this.ip);
+			//System.out.println("se cancelo el contador de ip "+this.ip);
 			this.contadores.put(ip, t);
 		}
 		

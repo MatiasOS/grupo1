@@ -33,7 +33,7 @@ public class Heartbeat implements Runnable {
 			try {
 				dos.writeUTF(mensaje);
 				System.out.println("Le envio al servidor "+this.ip+" "+mensaje +"se va a dormir 10 segs");
-				Thread.sleep(10000);
+				Thread.sleep(5000);
 			} catch (InterruptedException | IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
