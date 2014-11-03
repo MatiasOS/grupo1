@@ -21,10 +21,9 @@ public class TimerTaskTemporizador extends TimerTask {
 	public void run() {
 		//System.out.println("Abro sync hilo TimerTask");
 		//synchronized (contadores) {
-			synchronized (direcciones) {
-				direcciones.remove(ip);
-				//contadores.remove(ip);
-			}
+			direcciones.remove(ip);
+			//contadores.remove(ip);
+		//}
 		//}
 		//System.out.println("Cierro sync hilo TimerTask");
 	}
