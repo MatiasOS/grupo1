@@ -5,7 +5,7 @@ import java.net.Socket;
 import java.util.logging.*;
 
 class Script extends Thread {
-	private static String ipDns = "127.0.0.1";// TODO Harcodear ipDns
+	private static String ipDns = "192.168.1.16";// TODO Harcodear ipDns
     protected Socket sk;
     protected DataOutputStream dos;
     protected DataInputStream dis;
@@ -28,7 +28,7 @@ class Script extends Thread {
             //ipServ = "127.0.0.1";
             System.out.println(id + " Servidor devuelve: " + ipServ);
             
-            enviarClicks(ipServ); // Levanta los clicks desde el txt. y los envia a respuesta
+            //enviarClicks(ipServ); // Levanta los clicks desde el txt. y los envia a respuesta
  
         } catch (IOException ex) {
             Logger.getLogger(Script.class.getName()).log(Level.SEVERE, null, ex);
