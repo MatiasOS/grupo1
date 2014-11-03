@@ -8,11 +8,8 @@ import server.procesamiento.Servidor;
 
 public class ServidorMonitoreo {
 	
-<<<<<<< HEAD
-	private static String ipDns = "192.168.1.15";// TODO Harcodear ipDns
-=======
 	private static String ipDns = "192.168.1.7";// TODO Harcodear ipDns
->>>>>>> origin/master
+
 	private static DataOutputStream registroServidor;
 	
 	
