@@ -22,32 +22,23 @@ public class EscuchadorServidorHilo implements Runnable {
 		this.sk=sk;
 	}
 	public void run() {
-		//System.out.println(this.contadores.get(this.ip)+"mostrar");
-		//System.out.println(this.ip);
-		//System.out.println(this.contadores);
-		while (true){
-		try {
-			DataInputStream dis = new DataInputStream(sk.getInputStream());
-			//String ipServidorEntrante = dis.readUTF();
-			this.ip =dis.readUTF();
-			//System.out.println(ipServidorEntrante);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		boolean sigue = true;
+		while (sigue){
+				try {
+					DataInputStream dis = new DataInputStream(sk.getInputStream());
+					this.ip =dis.readUTF();
+				} catch (IOException e) {
+					sigue = false;
+				}
+				TimerTaskTemporizador tt = new TimerTaskTemporizador(ip, contadores, direcciones);
+				Timer t = new Timer();
+				t.schedule(tt, 12000, 12000);
+				synchronized (contadores) {
+					(this.contadores.get(this.ip)).cancel();
+					System.out.println("se cancelo el contador de ip "+this.ip);
+					this.contadores.put(ip, t);
+				}
 		}
-		TimerTaskTemporizador tt = new TimerTaskTemporizador(ip, contadores, direcciones);
-		Timer t = new Timer();
-		t.schedule(tt, 12000, 12000);
-		//System.out.println("Abro sync hilo escuchadorHilo");
-		synchronized (contadores) {
-			(this.contadores.get(this.ip)).cancel();
-			//System.out.println("se cancelo el contador de ip "+this.ip);
-			this.contadores.put(ip, t);
-		}
-		
-		//System.out.println("Cierro sync hilo escuchadorHilo");
-		
-		//System.out.println(" Heartbeat de " + this.ip);
-		}
+		System.out.println("sevidor desconectado");
 	}
 }
