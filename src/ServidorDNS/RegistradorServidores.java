@@ -4,19 +4,15 @@ import java.io.DataInputStream;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.util.HashMap;
-import java.util.Timer;
 import java.util.Vector;
 
 public class RegistradorServidores implements Runnable{
 
 	private Vector<String> direcciones;
 	private ServerSocket ss;
-	private HashMap<String, Timer> contadores;
 	
-	public RegistradorServidores(Vector<String> direcciones, int puerto,HashMap<String, Timer> contadores) {
+	public RegistradorServidores(Vector<String> direcciones, int puerto) {
 		this.direcciones=direcciones;
-		this.contadores = contadores;
 		// Se pone al RegistradorServidores a escuchar
 		// por el puerto puerto(10579)
 		try {
@@ -39,7 +35,7 @@ public class RegistradorServidores implements Runnable{
 				DataInputStream dis = new DataInputStream(sk.getInputStream());
 				String ipServidorEntrante = dis.readUTF();
 				//System.out.println(ipServidorEntrante+" se quiere registrar");
-				(new Thread(new RegistradorServidorHilo(ipServidorEntrante,direcciones,contadores))).start();
+				(new Thread(new RegistradorServidorHilo(ipServidorEntrante,direcciones))).start();
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
