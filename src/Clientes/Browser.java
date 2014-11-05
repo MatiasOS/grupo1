@@ -8,13 +8,13 @@ public class Browser {
     	
         ArrayList<Thread> clients = new ArrayList<Thread>();
         
-        for (int i = 0; i < 1; i++)
+        for (int i = 0; i < 50; i++)
             clients.add(new Script(i)); //AGREGO 5 PETICIONES
 
         for (Thread thread : clients) { //RECORRO LAS 5 PERSONAS
             thread.start();
             try {
-				Thread.sleep(5000); //DUERMO CADA PERSONA
+				Thread.sleep(1000); //DUERMO CADA PERSONA
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}

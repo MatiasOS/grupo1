@@ -1,6 +1,7 @@
 package server.Monitoreo;
 
 public class Click {
+	private String id;
 	private String fecha;
 	private String hora;
 	private String browser;
@@ -51,6 +52,12 @@ public class Click {
 	
 	public void print () {
 		System.out.println("..............el click contiene estos datos que van a ser almacenados en la bd............ "  );
-		System.out.println("ip:["  + ip+"] link:["  + link +"] browser:["  + browser+"] so:["  + so +"] hora:["  + hora +"] fecha:["  + fecha+"]");
+		System.out.println("id:["+id+"] ip:["  + ip+"] link:["  + link +"] browser:["  + browser+"] so:["  + so +"] hora:["  + hora +"] fecha:["  + fecha+"]");
+	}
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
 	}
 }

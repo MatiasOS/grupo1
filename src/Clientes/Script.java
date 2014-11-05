@@ -30,14 +30,14 @@ class Script extends Thread {
         try {       
             pedirServidor();
             System.out.println(id + " Servidor devuelve: " + ipServ);
-            enviarClicks(ipServ); // Levanta los clicks desde el txt. y los envia a respuesta
+            enviarClicks(); // Levanta los clicks desde el txt. y los envia a respuesta
  
         } catch (IOException ex) {
             Logger.getLogger(Script.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
-    private void enviarClicks(String ipServ) {
+    private void enviarClicks() {
 
 		File f = new File( "./clicks.txt" );
 	    BufferedReader entrada;
@@ -45,17 +45,20 @@ class Script extends Thread {
 		       
 					try {
 						entrada = new BufferedReader( new FileReader( f ) );
-						while(entrada.ready()){
+						while((linea = entrada.readLine())!= null){
+							// linea = entrada.readLine();
+							System.out.println(": esto es lo que tiene la linea " + linea);
 							 try {
+								
 								sk = new Socket(ipServ, 5001); // Creo el socket al servidorMonitoreo al que va a enviar el click
 								 dos = new DataOutputStream(sk.getOutputStream()); // cada vez que va a enviar crea el socket
 								 dis = new DataInputStream(sk.getInputStream());
-								 linea = entrada.readLine();
+								 
 								 System.out.println(linea);
 								 System.out.println( "Script ["+id + "] envia click" ); 
-								 dos.writeUTF(linea);
+								 dos.writeUTF( id+ "$" +linea );
 								 sk.close();
-								 this.sleep(5000);
+								 this.sleep(1000);
 							 } catch (IOException e) {
 								 	System.out.println("se rompio acaaaaaaaaaaa y pido un nuevo servidor");
 								    pedirServidor();
