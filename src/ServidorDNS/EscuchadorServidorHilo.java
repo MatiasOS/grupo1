@@ -22,6 +22,7 @@ public class EscuchadorServidorHilo implements Runnable {
 					DataInputStream dis = new DataInputStream(sk.getInputStream());
 					String ipAux =dis.readUTF();
 					this.ip =ipAux;
+					System.out.println("Llego un heartbeat de "+ip);
 				} catch (IOException e) {
 					sigue = false;
 					direcciones.remove(ip);

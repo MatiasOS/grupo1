@@ -24,7 +24,9 @@ public class AsignadorServidorHilo implements Runnable {
 	
 	public void run() {
 		try {
-			dos.writeUTF(direcciones.elementAt(dir%direcciones.size()));
+			if(direcciones.size()!=0)
+				dos.writeUTF(direcciones.elementAt(dir%direcciones.size()));
+			else System.out.println("no hay servidores :-(");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

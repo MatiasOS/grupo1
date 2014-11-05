@@ -7,7 +7,7 @@ import server.Monitoreo.ServidorHilo;
 public class ServidorMonitoreo {
 	
 
-	private static String ipDns = "192.168.1.16";// TODO Harcodear ipDns
+	private static String ipDns = "192.168.1.15";// TODO Harcodear ipDns
 
 	private static DataOutputStream registroServidor;
 	
@@ -35,12 +35,13 @@ public class ServidorMonitoreo {
             // Inicializacion de heartbeat con la ip y el puerto
             // a donde se tienen que comunicar los scripts
             Thread hear = new Thread(new Heartbeat(ipDns,10580,ipMia.getHostAddress()));
-            hear.run();
+            hear.start();
             System.out.println("\t[OK]");
             while (true) {
                 Socket socket;
+                System.out.println("esperando conexion...");
                 socket = ss.accept();
-                System.out.println("Nueva conexi�n entrante: "+socket);
+                System.out.println("Nueva conexi�n entrante: "+socket+"\n");
                 // Se crea un nuevo hilo para manejar la conexion con el script
                 ((ServidorHilo) new ServidorHilo(socket)).start();
             }

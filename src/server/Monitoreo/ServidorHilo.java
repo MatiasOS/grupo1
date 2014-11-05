@@ -37,10 +37,10 @@ public class ServidorHilo extends Thread {
             Click ck;
             ck = p.parsear(click);
             ck.print();
-            DataAccess data = new DataAccess();
-            data.insertarValor(ck);
+            //DataAccess data = new DataAccess();
+            //data.insertarValor(ck);
             
-        } catch (IOException | ClassNotFoundException ex) {
+        } catch (IOException ex) {
             Logger.getLogger(ServidorHilo.class.getName()).log(Level.SEVERE, null, ex);
         }
         desconnectar();

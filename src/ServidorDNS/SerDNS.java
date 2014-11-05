@@ -1,8 +1,6 @@
 package ServidorDNS;
 
 import java.io.*;
-import java.util.HashMap;
-import java.util.Timer;
 import java.util.Vector;
 
 public class SerDNS {
