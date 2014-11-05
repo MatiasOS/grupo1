@@ -56,7 +56,8 @@ class Script extends Thread {
 								 
 								 System.out.println(linea);
 								 System.out.println( "Script ["+id + "] envia click" ); 
-								 dos.writeUTF( id+ "$" +linea );
+								 dos.writeUTF( String.valueOf(id)+ "$" +linea );
+								 System.out.println(String.valueOf(id)+ "$" +linea);
 								 sk.close();
 								 this.sleep(1000);
 							 } catch (IOException e) {

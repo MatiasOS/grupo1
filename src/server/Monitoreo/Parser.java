@@ -24,13 +24,13 @@ public class Parser {
 			srtg.add(e);
 		}
 		/////
-		
-		click.setFecha(srtg.elementAt(0));
-		click.setHora(srtg.elementAt(1));
-		click.setBrowser(srtg.elementAt(2));
-		click.setSo(srtg.elementAt(3));
-		click.setLink(srtg.elementAt(4));
-		click.setIp(srtg.elementAt(5));
+		click.setId(srtg.elementAt(0));
+		click.setFecha(srtg.elementAt(1));
+		click.setHora(srtg.elementAt(2));
+		click.setBrowser(srtg.elementAt(3));
+		click.setSo(srtg.elementAt(4));
+		click.setLink(srtg.elementAt(5));
+		click.setIp(srtg.elementAt(6));
 		
 		return click;
 	}
