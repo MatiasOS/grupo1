@@ -6,7 +6,7 @@ import java.net.UnknownHostException;
 import java.util.logging.*;
 
 class Script extends Thread {
-	private static String ipDns = "192.168.1.15";// TODO Harcodear ipDns
+	private  String ipDns ;
     protected Socket sk;
     protected DataOutputStream dos;
     protected DataInputStream dis;
@@ -14,6 +14,7 @@ class Script extends Thread {
     private String ipServ;
     
     private void pedirServidor() throws UnknownHostException, IOException {
+    	
     	 sk = new Socket(ipDns, 10578); // TODO setear ip del servidor DNS
          dos = new DataOutputStream(sk.getOutputStream()); //LE DOY LAS ENTRADAS Y SALIDAS DEL SOCKET
          dis = new DataInputStream(sk.getInputStream());
@@ -22,8 +23,9 @@ class Script extends Thread {
          sk.close();
     }
 
-    public Script(int id) {
+    public Script(int id, String ipdns) {
         this.id = id;
+        this.ipDns = ipdns;
     }
 
     public void run() {
@@ -42,36 +44,35 @@ class Script extends Thread {
 		File f = new File( "./clicks.txt" );
 	    BufferedReader entrada;
 		String linea;
-		       
-					try {
-						entrada = new BufferedReader( new FileReader( f ) );
-						while((linea = entrada.readLine())!= null){
-							// linea = entrada.readLine();
-							System.out.println(": esto es lo que tiene la linea " + linea);
-							 try {
-								
-								sk = new Socket(ipServ, 5001); // Creo el socket al servidorMonitoreo al que va a enviar el click
-								 dos = new DataOutputStream(sk.getOutputStream()); // cada vez que va a enviar crea el socket
-								 dis = new DataInputStream(sk.getInputStream());
-								 
-								 System.out.println(linea);
-								 System.out.println( "Script ["+id + "] envia click" ); 
-								 dos.writeUTF( String.valueOf(id)+ "$" +linea );
-								 System.out.println(String.valueOf(id)+ "$" +linea);
-								 sk.close();
-								 this.sleep(1000);
-							 } catch (IOException e) {
-								 	System.out.println("se rompio acaaaaaaaaaaa y pido un nuevo servidor");
-								    pedirServidor();
-								    System.out.println(id + " Servidor devuelve: " + ipServ);
-							 }
-							
-						 }
-					} catch (IOException | InterruptedException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-			
-	    
+		try {
+			entrada = new BufferedReader(new FileReader(f));
+			while ((linea = entrada.readLine()) != null) {
+				System.out.println(": esto es lo que tiene la linea " + linea);
+				try {
+
+					sk = new Socket(ipServ, 5001); // Creo el socket al
+													// servidorMonitoreo al que
+													// va a enviar el click
+					dos = new DataOutputStream(sk.getOutputStream()); // cada vez que va a enviar un click crea el socket con el serv
+					dis = new DataInputStream(sk.getInputStream());
+					
+					System.out.println(linea);
+					System.out.println("Script [" + id + "] envia click");
+					dos.writeUTF(String.valueOf(id) + "$" + linea);
+					System.out.println(String.valueOf(id) + "$" + linea);
+					sk.close();
+					this.sleep(1000);
+				} catch (IOException e) {
+					System.out.println("pide un nuevo servidor: ");
+					pedirServidor();
+					System.out.println(id + " Servidor devuelve: " + ipServ);
+				}
+
+			}
+		} catch (IOException | InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 	}
 }

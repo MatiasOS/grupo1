@@ -8,8 +8,6 @@ public class SerDNS {
 	private static Vector<String> direcciones;
 	
 	// Puerto por el cual se registran los servidores
-	//private int puertoServidores = 10579;
-	
     public static void main(String args[]) throws IOException {
     	
     	direcciones = new Vector<String>();

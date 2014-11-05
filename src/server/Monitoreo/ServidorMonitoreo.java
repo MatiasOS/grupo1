@@ -8,13 +8,24 @@ public class ServidorMonitoreo {
 	
 
 	private static String ipDns = "192.168.1.15";// TODO Harcodear ipDns
-
 	private static DataOutputStream registroServidor;
 	
+	private static String getIpDns() { // Lee del archivo de configuracion la ip del Servidor Dns
+	      String linea = null;
+	      try {
+	    	 File archivo = new File( "./config.txt" );
+	    	 BufferedReader br = new BufferedReader(new FileReader (archivo));
+	         linea = br.readLine();
+	      }
+	      catch(Exception e){
+	         e.printStackTrace();
+	      }
+	      return linea;
+	}
 	
 	private static void registrarServidor(InetAddress ipMia){
 		try {
-			Socket sk = new Socket(ipDns, 10579);
+			Socket sk = new Socket(getIpDns(), 10579);
 			registroServidor = new DataOutputStream(sk.getOutputStream());
 			registroServidor.writeUTF(ipMia.getHostAddress());
 			
@@ -34,7 +45,7 @@ public class ServidorMonitoreo {
             ss = new ServerSocket(5001);
             // Inicializacion de heartbeat con la ip y el puerto
             // a donde se tienen que comunicar los scripts
-            Thread hear = new Thread(new Heartbeat(ipDns,10580,ipMia.getHostAddress()));
+            Thread hear = new Thread(new Heartbeat(getIpDns(),10580,ipMia.getHostAddress()));
             hear.start();
             System.out.println("\t[OK]");
             while (true) {

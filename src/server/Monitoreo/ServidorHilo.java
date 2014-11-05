@@ -42,7 +42,7 @@ public class ServidorHilo extends Thread {
             data.insertarValor(ck);
             System.out.println("...se envió el click a la base de datos...");
             
-        } catch (IOException | ClassNotFoundException ex) {
+        } catch (IOException | ClassNotFoundException  ex) {
             Logger.getLogger(ServidorHilo.class.getName()).log(Level.SEVERE, null, ex);
         }
         desconnectar();
