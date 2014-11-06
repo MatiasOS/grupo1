@@ -19,7 +19,7 @@ public class DataAccess {
 	        try
 	        {
 	            Class.forName("com.mysql.jdbc.Driver");
-	            String servidor = "jdbc:mysql://186.39.22.147:3306/diseño"; //
+	            String servidor = "jdbc:mysql://186.39.18.252:3306/diseño"; //
 	            String usuarioDB="usuario";
 	            String passwordDB="usuario1";
 	            conexion= DriverManager.getConnection(servidor,usuarioDB,passwordDB);
