@@ -14,8 +14,7 @@ class Script extends Thread {
     private String ipServ;
     
     private void pedirServidor() throws UnknownHostException, IOException {
-    	
-    	 sk = new Socket(ipDns, 10578); // TODO setear ip del servidor DNS
+    	 sk = new Socket(ipDns, 10578); // TODO setear ip del servidor DNS.
          dos = new DataOutputStream(sk.getOutputStream()); //LE DOY LAS ENTRADAS Y SALIDAS DEL SOCKET
          dis = new DataInputStream(sk.getInputStream());
          System.out.println( "Script [" +id + "] Pide Servidor ");
