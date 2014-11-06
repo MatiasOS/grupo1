@@ -50,7 +50,9 @@ public class DataAccess {
 	{
 		try {
 			Connection conexion = DataAccess.GetConnection();
-            String query = "INSERT INTO datos_no_procesados (`ip`,`fecha`,`link`,`browser`,`so`,`idcliente`,`hora`) VALUES (" + c.getIp()+"," +c.getFecha()+"," +c.getLink() + "," +c.getBrowser()+","+c.getSo()+","+c.getId()+","+c.getHora()+");";
+			//String query = "INSERT INTO datos_no_procesados (`id`, `ip`, `fecha`) VALUES (NULL, '"+ip+"', NULL);";
+			String query = "INSERT INTO datos_no_procesados (`id`, `ip`, `fecha`) VALUES (NULL, 'sdakls', NULL);";
+            //String query = "INSERT INTO datos_no_procesados ('ip','fecha','link','browser','so','idcliente','hora') VALUES ('" + c.getIp()+"','11-11-11','" +c.getLink() + "','" +c.getBrowser()+"','"+c.getSo()+"','"+c.getId()+"','"+c.getHora()+"');";
             System.out.println(query);
             PreparedStatement preparedStmt = (PreparedStatement) conexion.prepareStatement(query);
             preparedStmt.execute();
