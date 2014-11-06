@@ -3,11 +3,9 @@ package ServidorDNS;
 import java.io.*;
 import java.util.Vector;
 
-import escuchadorDNS.EscuchadorServidor;
-
-import registradorDNS.RegistradorServidores;
-
-import asignadorDNS.AsignadorServidor;
+import ServidorDNS.registradorDNS.RegistradorServidores;
+import ServidorDNS.asignadorDNS.AsignadorServidor;
+import ServidorDNS.escuchadorDNS.EscuchadorServidor;
 
 public class SerDNS {
 
