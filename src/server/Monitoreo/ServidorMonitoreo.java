@@ -6,8 +6,6 @@ import java.util.logging.*;
 import server.Monitoreo.ServidorHilo;
 public class ServidorMonitoreo {
 	
-
-	private static String ipDns = "192.168.1.15";// TODO Harcodear ipDns
 	private static DataOutputStream registroServidor;
 	
 	private static String getIpDns() { // Lee del archivo de configuracion la ip del Servidor Dns

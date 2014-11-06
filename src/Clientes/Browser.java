@@ -23,7 +23,7 @@ public class Browser {
     public static void main(String[] args) {
     	
         ArrayList<Thread> clients = new ArrayList<Thread>();
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < 200; i++)
             clients.add(new Script(i, getIpDns())); //AGREGO 5 PETICIONES
 
         for (Thread thread : clients) { //RECORRO LAS 5 PERSONAS
