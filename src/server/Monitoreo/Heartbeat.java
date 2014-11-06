@@ -28,14 +28,14 @@ public class Heartbeat implements Runnable {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-		
-		while (true){
+		boolean caido = false;
+		while (!caido){
 			try {
 				dos.writeUTF(mensaje);
 				Thread.sleep(5000);
 			} catch (InterruptedException | IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				System.out.println("Server DNS caido");
+				caido = true;
 			}
 		}
 

@@ -7,13 +7,14 @@ import java.util.Vector;
 
 public class AsignadorServidorHilo implements Runnable {
 	private Vector<String> direcciones;
-	private int dir;
+	
 	private Socket socket;
 	private DataOutputStream dos;
+	private int dir;
 	
-	public AsignadorServidorHilo(Socket socket,Vector<String> direcciones){
+	public AsignadorServidorHilo(Socket socket,Vector<String> direcciones,int dir){
 		this.direcciones = direcciones;
-		this.dir=0;
+		this.dir=dir;
 		this.socket = socket;
 		try {
 			dos = new DataOutputStream(this.socket.getOutputStream());

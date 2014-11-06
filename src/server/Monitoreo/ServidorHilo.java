@@ -32,7 +32,8 @@ public class ServidorHilo extends Thread {
         String click = "";
         try {
             click = dis.readUTF(); 
-            dos.writeUTF("me llego el click...");
+            System.out.println("llego... "+ click);
+            //dos.writeUTF("me llego el click...");
             Parser p = new Parser();
             Click ck;
             ck = p.parsear(click);
