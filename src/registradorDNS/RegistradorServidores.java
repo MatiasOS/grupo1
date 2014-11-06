@@ -1,4 +1,4 @@
-package ServidorDNS;
+package registradorDNS;
 
 import java.io.DataInputStream;
 import java.io.IOException;

@@ -1,4 +1,4 @@
-package ServidorDNS;
+package registradorDNS;
 
 import java.util.Vector;
 

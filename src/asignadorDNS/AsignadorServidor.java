@@ -1,4 +1,4 @@
-package ServidorDNS;
+package asignadorDNS;
 
 import java.io.IOException;
 import java.net.ServerSocket;

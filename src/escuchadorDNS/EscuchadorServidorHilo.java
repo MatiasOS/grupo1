@@ -1,4 +1,4 @@
-package ServidorDNS;
+package escuchadorDNS;
 
 import java.io.DataInputStream;
 import java.io.IOException;

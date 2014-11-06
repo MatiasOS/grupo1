@@ -3,6 +3,12 @@ package ServidorDNS;
 import java.io.*;
 import java.util.Vector;
 
+import escuchadorDNS.EscuchadorServidor;
+
+import registradorDNS.RegistradorServidores;
+
+import asignadorDNS.AsignadorServidor;
+
 public class SerDNS {
 
 	private static Vector<String> direcciones;
