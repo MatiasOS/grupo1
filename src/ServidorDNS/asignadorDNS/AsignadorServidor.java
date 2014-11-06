@@ -30,7 +30,6 @@ public class AsignadorServidor implements Runnable {
 				dir++;
 				Thread t = new Thread(new AsignadorServidorHilo(sk,direcciones,dir));
 				t.start();
-				//((AsignadorServidorHilo) new AsignadorServidorHilo((Socket)ss.accept(),direcciones)).run();
 			} catch (IOException e) {
 				e.printStackTrace();
 			}

@@ -19,6 +19,7 @@ class Script extends Thread {
          dis = new DataInputStream(sk.getInputStream());
          System.out.println( "Script [" +id + "] Pide Servidor ");
          ipServ = dis.readUTF(); //ENTRADA
+         System.out.println( " DNS asigna Servidor: " + ipServ);
          sk.close();
     }
 
@@ -30,7 +31,7 @@ class Script extends Thread {
     public void run() {
         try {       
             pedirServidor();
-            System.out.println(id + " Servidor devuelve: " + ipServ);
+           
             enviarClicks(); // Levanta los clicks desde el txt. y los envia a respuesta
  
         } catch (IOException ex) {
@@ -46,7 +47,6 @@ class Script extends Thread {
 		try {
 			entrada = new BufferedReader(new FileReader(f));
 			while ((linea = entrada.readLine()) != null) {
-				System.out.println(": esto es lo que tiene la linea " + linea);
 				try {
 
 					sk = new Socket(ipServ, 5001); // Creo el socket al
@@ -54,17 +54,13 @@ class Script extends Thread {
 													// va a enviar el click
 					dos = new DataOutputStream(sk.getOutputStream()); // cada vez que va a enviar un click crea el socket con el serv
 					dis = new DataInputStream(sk.getInputStream());
-					
-					System.out.println(linea);
-					System.out.println("Script [" + id + "] envia click");
+					System.out.println("Script [" + id + "] envia click"+"\n" +String.valueOf(id) + "$" + linea);
 					dos.writeUTF(String.valueOf(id) + "$" + linea);
-					System.out.println(String.valueOf(id) + "$" + linea);
 					sk.close();
 					this.sleep(1000);
 				} catch (IOException e) {
-					System.out.println("pide un nuevo servidor: ");
+					System.out.println("No se pudo establecer conexion con servidor" + ipServ);
 					pedirServidor();
-					System.out.println(id + " Servidor devuelve: " + ipServ);
 				}
 
 			}

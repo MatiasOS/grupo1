@@ -14,11 +14,9 @@ public class RegistradorServidorHilo implements Runnable{
 	
 	@Override
 	public void run() {
-		//System.out.println("Abro sync hilo registrador");
 		direcciones.add(ip);
 		System.out.println("se registro "+ip);
-		System.out.println("direcciones registradas: "+direcciones);
-		//System.out.println("Cierro sync hilo registrador");
+		System.out.println("Servidores registrados: "+direcciones);
 	}
 
 }

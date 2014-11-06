@@ -41,7 +41,6 @@ public class DataAccess {
 	        }
 	        finally
 	        {
-	        	System.out.println("conectado");
 	            return conexion;
 	        }
 	    }
@@ -51,10 +50,10 @@ public class DataAccess {
 		try {
 			Connection conexion = DataAccess.GetConnection();
 			String query = "			INSERT INTO `diseño`.`datos_no_procesados` (`id`, `ip`, `fecha`, `link`, `browser`, `so`, `idcliente`, `hora`) VALUES (NULL, '"+c.getIp()+"', '"+c.getFecha()+"', '"+c.getLink()+"', '"+c.getBrowser()+"', '"+c.getSo()+"', '"+c.getId()+"','"+c.getHora()+"');";
-           System.out.println(query);
             PreparedStatement preparedStmt = (PreparedStatement) conexion.prepareStatement(query);
             preparedStmt.execute();
 			conexion.close();
+			 System.out.println("Se guardó el click en la Base de Datos");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

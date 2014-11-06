@@ -33,14 +33,12 @@ public class ServidorHilo extends Thread {
         try {
             click = dis.readUTF(); 
             System.out.println("llego click... ");
-            //dos.writeUTF("me llego el click...");
             Parser p = new Parser();
             Click ck;
             ck = p.parsear(click);
-            //ck.print();
             DataAccess data = new DataAccess();
             data.insertarValor(ck);
-            System.out.println("...se envió el click a la base de datos...");
+           
             
         } catch (IOException | ClassNotFoundException  ex) {
             Logger.getLogger(ServidorHilo.class.getName()).log(Level.SEVERE, null, ex);

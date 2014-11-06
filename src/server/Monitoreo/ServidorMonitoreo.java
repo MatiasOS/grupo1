@@ -50,7 +50,6 @@ public class ServidorMonitoreo {
                 Socket socket;
                 System.out.println("esperando conexion...");
                 socket = ss.accept();
-                System.out.println("Nueva conexi�n entrante: "+socket+"\n");
                 // Se crea un nuevo hilo para manejar la conexion con el script
                 ((ServidorHilo) new ServidorHilo(socket)).start();
             }

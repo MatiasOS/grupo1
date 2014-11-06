@@ -27,7 +27,7 @@ public class EscuchadorServidorHilo implements Runnable {
 					sigue = false;
 					direcciones.remove(ip);
 					System.out.println("se elimino la ip "+ip);
-					System.out.println(direcciones);
+					System.out.println("Servidores Activos: "+direcciones);
 				}
 		}
 	}

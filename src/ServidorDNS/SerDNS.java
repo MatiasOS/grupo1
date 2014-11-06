@@ -15,18 +15,18 @@ public class SerDNS {
     public static void main(String args[]) throws IOException {
     	
     	direcciones = new Vector<String>();
-    	System.out.print("server starup... ");
+    	System.out.println("Iniciando servidor DNS... ");
     	
     	Thread t1 = new Thread(new RegistradorServidores(direcciones,10579));
     	t1.start();
-    	System.out.print("server starup1... ");
+    	System.out.println("Registrador ready... ");
     	
     	Thread t2 = new Thread(new EscuchadorServidor(direcciones,10580));
     	t2.start();
-    	System.out.print("server starup2... ");
+    	System.out.println("Escuchador ready... ");
     	
     	Thread t3 = new Thread(new AsignadorServidor(direcciones,10578));
     	t3.start();
-        System.out.print("server ready... ");
+        System.out.println("Asignador ready... ");
     }
 }

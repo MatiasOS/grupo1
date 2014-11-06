@@ -21,15 +21,20 @@ public class Browser {
 	}
 
     public static void main(String[] args) {
+    	int cant = 0;
+    	if (args.length == 0) 
+    		cant = 10;
+    	else 
+    		cant = Integer.valueOf( args[0]);
     	
         ArrayList<Thread> clients = new ArrayList<Thread>();
-        for (int i = 0; i < 200; i++)
+        for (int i = 0; i < cant; i++)
             clients.add(new Script(i, getIpDns())); //AGREGO 5 PETICIONES
 
         for (Thread thread : clients) { //RECORRO LAS 5 PERSONAS
             thread.start();
             try {
-				Thread.sleep(1000); //DUERMO CADA PERSONA
+				Thread.sleep(1000); 
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
